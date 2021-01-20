@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { PostOfficesModule } from './post-offices/post-offices.module';
+import { ShipmentsModule } from './shipments/shipments.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +13,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DashboardModule,
+    PostOfficesModule,
+    ShipmentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
