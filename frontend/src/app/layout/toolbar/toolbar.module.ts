@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PostOfficesComponent } from './post-offices.component';
+import { ToolbarComponent } from './toolbar.component';
 import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [PostOfficesComponent],
+  declarations: [ToolbarComponent],
+  exports: [
+    ToolbarComponent
+  ],
   imports: [
     CommonModule,
     RouterModule
   ]
 })
-export class PostOfficesModule { }
+export class ToolbarModule { }

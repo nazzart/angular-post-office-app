@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/sass/styles";
+
+body {
+  margin: 0;
+  background: $color-gray-light;
+  font-family: 'Roboto', sans-serif;
+  font-weight: $font-weight-light;
+}
+
+.container {
+  width: $desktop-width;
+  margin: auto;
+  display: flex;
+}

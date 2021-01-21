@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PostOfficesModule } from './post-offices/post-offices.module';
 import { ShipmentsModule } from './shipments/shipments.module';
+import { ToolbarModule } from './layout/toolbar/toolbar.module';
+import { AddEditOfficeModule } from './post-offices/add-edit-office/add-edit-office.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,13 @@ import { ShipmentsModule } from './shipments/shipments.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     DashboardModule,
     PostOfficesModule,
-    ShipmentsModule
+    ShipmentsModule,
+    ToolbarModule,
+    AddEditOfficeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-offices',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostOfficesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * Regirect to the edit/add form
+   */
+  addOffice(): void {
+    this.router.navigate(['post-offices/add']);
   }
 
 }

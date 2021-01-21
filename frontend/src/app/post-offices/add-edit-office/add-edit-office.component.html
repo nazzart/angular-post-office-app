@@ -1,0 +1,24 @@
+<div class="post-office-add-edit">
+  <div class="header-bar">
+    <h2></h2>
+  </div>
+  <div class="content">
+
+    <form [formGroup]="officeForm" (ngSubmit)="onSave()" class="form" autocomplete="off">
+
+        <input  type="text" formControlName="id" placeholder="Id">
+
+
+        <input  type="text" formControlName="PLZ" placeholder="PLZ" required>
+
+
+        <input  type="text" formControlName="name" placeholder="Name" required>
+
+      <div class="dialog-footer">
+        <button type="button" (click)="onCancel()">Cancel</button>
+        <button type="submit" id="save-button">Save</button>
+      </div>
+
+    </form>
+  </div>
+</div>
