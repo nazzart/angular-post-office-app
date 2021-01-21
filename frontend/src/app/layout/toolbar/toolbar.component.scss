@@ -1,0 +1,18 @@
+@import '../../../assets/sass/styles';
+
+.toolbar {
+  display: flex;
+  background: $color-blue-lead;
+  padding: $length-gap-small;
+}
+
+.actions {
+  margin-left: $length-gap-large;
+}
+
+.logo {
+  color: $color-white;
+  font-weight: $font-weight-default;
+  outline: none;
+  cursor: pointer;
+}
