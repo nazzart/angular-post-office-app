@@ -8,7 +8,10 @@ import { PostOfficesModule } from './post-offices/post-offices.module';
 import { ShipmentsModule } from './shipments/shipments.module';
 import { ToolbarModule } from './layout/toolbar/toolbar.module';
 import { AddEditOfficeModule } from './post-offices/add-edit-office/add-edit-office.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AppHttpInterceptor } from './services/http-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,19 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     DashboardModule,
     PostOfficesModule,
     ShipmentsModule,
     ToolbarModule,
     AddEditOfficeModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
