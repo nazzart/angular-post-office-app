@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
+/**
+ * Route to get the homepage
+ */
 router.get('/', function(req, res) {
     res.send();
 });

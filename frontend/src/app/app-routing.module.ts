@@ -13,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', component: PostOfficesComponent },
       { path: 'add', component: AddEditOfficeComponent },
+      { path: 'edit/:id', component: AddEditOfficeComponent },
     ]
   },
   { path: 'shipments', component: ShipmentsComponent },

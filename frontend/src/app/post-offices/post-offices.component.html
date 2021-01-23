@@ -4,5 +4,13 @@
       Add Office
     </button>
   </div>
-  <p>Table here</p>
+  <ng-container *ngIf="postOffices$ | async as offices">
+    <ul *ngFor="let office of offices">
+      <li>
+        {{ office.name }}
+        <button class="button" (click)="editOffice(office.id)">Edit</button>
+        <button class="button" (click)="deleteOffice(office.id)">Delete</button>
+      </li>
+    </ul>
+  </ng-container>
 </div>

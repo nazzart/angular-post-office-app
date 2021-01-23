@@ -1,4 +1,4 @@
-const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 
 /**
  * List of offices
@@ -15,3 +15,7 @@ const offices = [
         name: 'Schwanthalerhöhe',
     },
 ];
+
+module.exports = {
+    offices
+};
