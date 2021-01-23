@@ -13,8 +13,11 @@ router.post('/add', function(req, res) {
         PLZ: request.PLZ,
         name: request.name,
     };
-    addToList(newOffice);
-    res.send({success: { message: 'Office has been added!'}});
+    if(addToList(newOffice)){
+        res.send({success: { message: 'Office has been added!'}});
+    } else {
+        res.status(500).send({message: 'Something failed!'});
+    }
 });
 
 /**
@@ -34,8 +37,11 @@ router.post('/update', function(req, res) {
 router.post('/delete', function(req, res) {
     const id = req.body.id;
     const office = findOffice(id);
-    deleteOffice(office);
-    res.send({success: { message: 'Office has been deleted!'}});
+    if(deleteOffice(office)){
+        res.send({success: { message: 'Office has been deleted!'}});
+    } else {
+        res.status(500).send({message: 'Something failed!'});
+    }
 });
 
 /**
@@ -51,7 +57,11 @@ router.get('/list', function(req, res) {
 router.get('/:id', function(req, res) {
     const id = req.params.id;
     const office = findOffice(id);
-    res.send(office);
+    if(office) {
+        res.send(office);
+    } else {
+        res.status(500).send({message: 'Office not found!'});
+    }
 });
 
 /**
@@ -59,6 +69,7 @@ router.get('/:id', function(req, res) {
  */
 function addToList(newOffice) {
     db.offices.push(newOffice);
+    return true;
 }
 
 /**
@@ -66,8 +77,11 @@ function addToList(newOffice) {
  */
 function updateOffice(office, updatedOffice) {
     const pos = db.offices.indexOf(office);
-    db.offices[pos] = updatedOffice;
-    return office.id;
+    if(pos !== -1) {
+        db.offices[pos] = updatedOffice;
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -75,8 +89,11 @@ function updateOffice(office, updatedOffice) {
  */
 function deleteOffice(office) {
     const pos = db.offices.indexOf(office);
-    db.offices.splice(pos, 1);
-    return office.id;
+    if(pos !== -1) {
+        db.offices.splice(pos, 1);
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -85,9 +102,7 @@ function deleteOffice(office) {
 function findOffice(id) {
     const office = db.offices.filter(office => office.id === id);
     if (office.length === 0) {
-        const err = new Error('No such office');
-        err.status = 500;
-        throw err;
+        return false;
     } else {
         return office[0];
     }
